@@ -1,0 +1,96 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x572b03d35010 .scope module, "testbench" "testbench" 2 1;
+ .timescale 0 0;
+v0x572b03d4b830_0 .var "A", 0 0;
+v0x572b03d4b8f0_0 .var "B", 0 0;
+v0x572b03d4b9c0_0 .var "C", 0 0;
+v0x572b03d4bac0_0 .var "D", 0 0;
+v0x572b03d4bb90_0 .var "E", 0 0;
+v0x572b03d4bc30_0 .var "F", 0 0;
+v0x572b03d4bd00_0 .net "Y", 0 0, L_0x572b03d4c400;  1 drivers
+S_0x572b03d351a0 .scope module, "DUT" "example" 2 6, 3 1 0, S_0x572b03d35010;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 1 "B";
+    .port_info 2 /INPUT 1 "C";
+    .port_info 3 /INPUT 1 "D";
+    .port_info 4 /INPUT 1 "E";
+    .port_info 5 /INPUT 1 "F";
+    .port_info 6 /OUTPUT 1 "Y";
+L_0x572b03d4bdd0/d .functor NAND 1, v0x572b03d4b830_0, v0x572b03d4b8f0_0, C4<1>, C4<1>;
+L_0x572b03d4bdd0 .delay 1 (1,1,1) L_0x572b03d4bdd0/d;
+L_0x572b03d4bfb0/d .functor AND 1, v0x572b03d4b9c0_0, L_0x572b03d4c160, v0x572b03d4bac0_0, C4<1>;
+L_0x572b03d4bfb0 .delay 1 (2,2,2) L_0x572b03d4bfb0/d;
+L_0x572b03d4c160 .functor NOT 1, v0x572b03d4b8f0_0, C4<0>, C4<0>, C4<0>;
+L_0x572b03d4c220/d .functor NOR 1, v0x572b03d4bb90_0, v0x572b03d4bc30_0, C4<0>, C4<0>;
+L_0x572b03d4c220 .delay 1 (1,1,1) L_0x572b03d4c220/d;
+L_0x572b03d4c400/d .functor NAND 1, L_0x572b03d4bdd0, L_0x572b03d4bfb0, L_0x572b03d4c220, C4<1>;
+L_0x572b03d4c400 .delay 1 (1,1,1) L_0x572b03d4c400/d;
+v0x572b03cfafe0_0 .net "A", 0 0, v0x572b03d4b830_0;  1 drivers
+v0x572b03d4af80_0 .net "B", 0 0, v0x572b03d4b8f0_0;  1 drivers
+v0x572b03d4b040_0 .net "C", 0 0, v0x572b03d4b9c0_0;  1 drivers
+v0x572b03d4b0e0_0 .net "D", 0 0, v0x572b03d4bac0_0;  1 drivers
+v0x572b03d4b1a0_0 .net "E", 0 0, v0x572b03d4bb90_0;  1 drivers
+v0x572b03d4b2b0_0 .net "F", 0 0, v0x572b03d4bc30_0;  1 drivers
+v0x572b03d4b370_0 .net "Y", 0 0, L_0x572b03d4c400;  alias, 1 drivers
+v0x572b03d4b430_0 .net *"_ivl_0", 0 0, L_0x572b03d4c160;  1 drivers
+v0x572b03d4b510_0 .net "t1", 0 0, L_0x572b03d4bdd0;  1 drivers
+v0x572b03d4b5d0_0 .net "t2", 0 0, L_0x572b03d4bfb0;  1 drivers
+v0x572b03d4b690_0 .net "t3", 0 0, L_0x572b03d4c220;  1 drivers
+    .scope S_0x572b03d35010;
+T_0 ;
+    %vpi_call 2 9 "$dumpfile", "example.vcd" {0 0 0};
+    %vpi_call 2 10 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x572b03d35010 {0 0 0};
+    %vpi_call 2 11 "$monitor", $time, " A=%b, B=%b, C=%b, D=%b, E=%b, F=%b, Y=%b", v0x572b03d4b830_0, v0x572b03d4b8f0_0, v0x572b03d4b9c0_0, v0x572b03d4bac0_0, v0x572b03d4bb90_0, v0x572b03d4bc30_0, v0x572b03d4bd00_0 {0 0 0};
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x572b03d4b830_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x572b03d4b8f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x572b03d4b9c0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x572b03d4bac0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x572b03d4bb90_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x572b03d4bc30_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x572b03d4b830_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x572b03d4b8f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x572b03d4b9c0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x572b03d4bac0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x572b03d4bb90_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x572b03d4bc30_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x572b03d4b830_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x572b03d4b9c0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x572b03d4bc30_0, 0, 1;
+    %delay 5, 0;
+    %vpi_call 2 19 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "example_testbench.v";
+    "example.v";
