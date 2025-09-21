@@ -1,0 +1,76 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x5fd98e65ec20 .scope module, "adder_4bit_dataflow_tb" "adder_4bit_dataflow_tb" 2 1;
+ .timescale 0 0;
+v0x5fd98e673920_0 .var "A", 3 0;
+v0x5fd98e673a00_0 .var "B", 3 0;
+v0x5fd98e673ad0_0 .net "CarryOut", 0 0, L_0x5fd98e673ca0;  1 drivers
+v0x5fd98e673bd0_0 .net "Sum", 3 0, L_0x5fd98e673d40;  1 drivers
+S_0x5fd98e65edb0 .scope module, "uut" "adder_4bit_dataflow" 2 6, 3 1 0, S_0x5fd98e65ec20;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "A";
+    .port_info 1 /INPUT 4 "B";
+    .port_info 2 /OUTPUT 4 "Sum";
+    .port_info 3 /OUTPUT 1 "CarryOut";
+v0x5fd98e65f000_0 .net "A", 3 0, v0x5fd98e673920_0;  1 drivers
+v0x5fd98e673160_0 .net "B", 3 0, v0x5fd98e673a00_0;  1 drivers
+v0x5fd98e673240_0 .net "CarryOut", 0 0, L_0x5fd98e673ca0;  alias, 1 drivers
+v0x5fd98e673310_0 .net "Sum", 3 0, L_0x5fd98e673d40;  alias, 1 drivers
+L_0x72864afb7060 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x5fd98e6733f0_0 .net *"_ivl_10", 0 0, L_0x72864afb7060;  1 drivers
+v0x5fd98e673520_0 .net *"_ivl_11", 4 0, L_0x5fd98e674130;  1 drivers
+v0x5fd98e673600_0 .net *"_ivl_3", 4 0, L_0x5fd98e673e80;  1 drivers
+L_0x72864afb7018 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x5fd98e6736e0_0 .net *"_ivl_6", 0 0, L_0x72864afb7018;  1 drivers
+v0x5fd98e6737c0_0 .net *"_ivl_7", 4 0, L_0x5fd98e673fc0;  1 drivers
+L_0x5fd98e673ca0 .part L_0x5fd98e674130, 4, 1;
+L_0x5fd98e673d40 .part L_0x5fd98e674130, 0, 4;
+L_0x5fd98e673e80 .concat [ 4 1 0 0], v0x5fd98e673920_0, L_0x72864afb7018;
+L_0x5fd98e673fc0 .concat [ 4 1 0 0], v0x5fd98e673a00_0, L_0x72864afb7060;
+L_0x5fd98e674130 .arith/sum 5, L_0x5fd98e673e80, L_0x5fd98e673fc0;
+    .scope S_0x5fd98e65ec20;
+T_0 ;
+    %vpi_call 2 13 "$dumpfile", "problem_5.vcd" {0 0 0};
+    %vpi_call 2 14 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x5fd98e65ec20 {0 0 0};
+    %vpi_call 2 15 "$monitor", "A = %b, B = %b, Sum = %b, CarryOut = %b", v0x5fd98e673920_0, v0x5fd98e673a00_0, v0x5fd98e673bd0_0, v0x5fd98e673ad0_0 {0 0 0};
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v0x5fd98e673920_0, 0, 4;
+    %pushi/vec4 2, 0, 4;
+    %store/vec4 v0x5fd98e673a00_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v0x5fd98e673920_0, 0, 4;
+    %pushi/vec4 7, 0, 4;
+    %store/vec4 v0x5fd98e673a00_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v0x5fd98e673920_0, 0, 4;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v0x5fd98e673a00_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 10, 0, 4;
+    %store/vec4 v0x5fd98e673920_0, 0, 4;
+    %pushi/vec4 13, 0, 4;
+    %store/vec4 v0x5fd98e673a00_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v0x5fd98e673920_0, 0, 4;
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v0x5fd98e673a00_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 31 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "question5_dataflow_tb.v";
+    "question5_dataflow.v";
